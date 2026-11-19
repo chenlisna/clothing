@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>智慧服裝與電子紡織實驗室｜國中八堂課</title>
+<style>
+:root{--ink:#243447;--muted:#617184;--paper:#fffdf8;--sea:#dcefeb;--blue:#477b91;--gold:#d7a84b;--line:#d9e2df;--pink:#f4e2df}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;line-height:1.75}
+header{background:linear-gradient(130deg,#dcefeb,#f8edda 65%,#f4e2df);padding:42px 20px 34px;text-align:center}
+header h1{font-size:clamp(1.8rem,5vw,3rem);line-height:1.25;margin:.3em 0;color:#254b5b}
+header p{max-width:800px;margin:auto;color:#405c68}
+nav{position:sticky;top:0;background:#fffefaed;backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:5;display:flex;gap:8px;overflow:auto;padding:10px max(14px,calc((100% - 1100px)/2))}
+nav a{white-space:nowrap;text-decoration:none;color:#315b68;padding:7px 12px;border-radius:20px;font-size:.92rem}nav a:hover{background:var(--sea)}
+main{max-width:1100px;margin:auto;padding:22px 18px 60px}
+section{scroll-margin-top:76px;margin:30px 0;padding:24px;background:white;border:1px solid var(--line);border-radius:18px;box-shadow:0 5px 18px #2434470a}
+h2{color:#315f70;margin-top:0;font-size:1.55rem}h3{color:#426d78;margin-bottom:8px}
+.lead{font-size:1.08rem;color:#405b65}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card{background:#f7faf8;border:1px solid var(--line);padding:16px;border-radius:13px}
+.tag{display:inline-block;background:#e5f1ee;color:#315f58;border-radius:20px;padding:2px 10px;font-size:.82rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem}th,td{border-bottom:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}th{background:#edf5f2}
+.note{border-left:4px solid var(--gold);background:#fff8e9;padding:12px 15px;border-radius:8px;margin:14px 0}
+.warn{border-left:4px solid #c76b57;background:#fff1ed;padding:12px 15px;border-radius:8px;margin:14px 0}
+.step{counter-increment:steps;padding:10px 12px 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.steps{counter-reset:steps}.step:before{content:counter(steps);position:absolute;left:5px;top:10px;background:var(--sea);color:#285c65;border-radius:50%;width:27px;height:27px;text-align:center;font-weight:bold}
+button{border:0;border-radius:9px;padding:9px 14px;background:#386b78;color:white;cursor:pointer;font:inherit}button:hover{background:#254f5c}
+input,select,textarea{font:inherit;padding:9px;border:1px solid #b9cbc8;border-radius:8px;max-width:100%}
+label{display:block;margin:8px 0}.checklist label{display:flex;gap:9px;align-items:flex-start}
+.diagram{width:100%;max-width:760px;display:block;margin:12px auto;background:#fbfdfc;border:1px solid var(--line);border-radius:12px}
+.small{font-size:.9rem;color:var(--muted)}.lesson{border-top:1px solid var(--line);padding:16px 0}.lesson:first-of-type{border-top:0}
+footer{text-align:center;padding:30px;color:var(--muted);background:#eef5f1}
+@media print{nav,button{display:none}body{background:white}section{break-inside:avoid;box-shadow:none}}
+</style>
+</head>
+<body>
+<header>
+ <span class="tag">國中跨領域實作課程｜8 堂 × 45–50 分鐘</span>
+ <h1>智慧服裝與電子紡織實驗室</h1>
+ <p>從身型與服裝版型、布料縫紉，到導電縫線、LED、ESP32 感測互動，設計一件兼具舒適、功能與創意的可穿戴作品。</p>
+</header>
+<nav>
+ <a href="#about">課程總覽</a><a href="#body">身型與服裝</a><a href="#materials">材料清單</a><a href="#circuit">電路圖</a><a href="#lessons">八堂教案</a><a href="#assessment">評量</a><a href="#worksheet">學生學習單</a><a href="#safety">安全守則</a>
+</nav>
+<main>
+<section id="about">
+<h2>一、課程總覽</h2>
+<p class="lead">核心問題：如何把電子科技安全、舒適而有美感地整合進日常服裝？</p>
+<div class="grid">
+ <div class="card"><h3>服裝設計</h3><p>認識服裝用途、穿著情境、色彩搭配、服裝結構與版型。</p></div>
+ <div class="card"><h3>身型與合身</h3><p>學習服裝尺寸測量、鬆量、活動量與不同版型的選擇。</p></div>
+ <div class="card"><h3>電子紡織</h3><p>認識導電縫線、可縫式 LED、電源與絕緣方式。</p></div>
+ <div class="card"><h3>智慧控制</h3><p>認識 ESP32、感測器、低電壓電路與程式控制概念。</p></div>
+</div>
+<h3>學習目標</h3>
+<ul>
+<li>能說明服裝尺寸、版型、鬆量與穿著舒適性的關係。</li>
+<li>能辨認布料、一般縫線、導電縫線及電子元件。</li>
+<li>能依電路圖完成簡單的低電壓 LED 紡織電路。</li>
+<li>能說明 ESP32 與感測器如何讓服裝產生互動。</li>
+<li>能完成設計草圖、製作紀錄、作品展示及反思。</li>
+</ul>
+</section>
+
+<section id="body">
+<h2>二、身型與服裝教學</h2>
+<p>本單元重點是「服裝如何配合不同身體尺寸與活動需求」，不是評價或比較身體。每個人的身體都不同，合適的服裝應以安全、舒適、活動方便及個人喜好為原則。</p>
+<div class="note"><b>教學尊重原則：</b>不排名、不評論身材、不公開個人尺寸。可隔著日常衣物測量，也可使用人台、服裝尺寸卡或假想數據完成練習。學生可選擇不提供自己的身體尺寸。</div>
+<h3>2-1 常見服裝測量位置</h3>
+<table><tr><th>測量項目</th><th>測量位置與用途</th></tr>
+<tr><td>胸圍／上胸圍</td><td>軟尺水平繞過胸部最豐滿處或上胸位置；用於上衣尺寸參考。可改用衣物平量。</td></tr>
+<tr><td>腰圍</td><td>自然腰部位置；用於上衣、裙褲腰部尺寸參考。</td></tr>
+<tr><td>臀圍</td><td>臀部最寬處水平測量；用於裙、褲及下身版型。</td></tr>
+<tr><td>肩寬</td><td>左右肩端點之間；影響肩線位置與活動。</td></tr>
+<tr><td>衣長</td><td>由肩部附近量至希望的衣服下擺位置。</td></tr>
+<tr><td>袖長</td><td>由肩端沿手臂量至希望的袖口位置；手臂自然微彎。</td></tr>
+<tr><td>背長</td><td>由後頸基準點量至腰部或指定下擺位置。</td></tr></table>
+<h3>2-2 服裝合身的三個概念</h3>
+<div class="grid">
+ <div class="card"><b>身體尺寸</b><p>人體或既有衣物的實際測量值。</p></div>
+ <div class="card"><b>成衣尺寸</b><p>完成後服裝本身的尺寸。</p></div>
+ <div class="card"><b>鬆量（活動空間）</b><p>成衣尺寸與身體尺寸之間預留的空間，需依服裝款式、布料彈性及活動需求調整。</p></div>
+</div>
+<h3>2-3 服裝版型與穿著情境</h3>
+<table><tr><th>版型</th><th>特點</th><th>智慧服裝設計提醒</th></tr>
+<tr><td>合身版</td><td>貼近身體輪廓</td><td>電子元件不可凸出、摩擦皮膚或限制活動。</td></tr>
+<tr><td>直筒版</td><td>上下較接近直線</td><td>適合把電路安排在側邊或裝飾布片。</td></tr>
+<tr><td>寬鬆版</td><td>預留較多活動空間</td><td>須固定線路，避免勾到物品。</td></tr>
+<tr><td>外套／背心</td><td>可分層穿著</td><td>可設計可拆卸電子模組與口袋。</td></tr></table>
+<h3>2-4 服裝搭配設計原則</h3>
+<ul><li><b>用途：</b>日常、舞台、夜間可視、運動或展示。</li><li><b>色彩：</b>選擇主色、輔色與點綴色，讓燈光與布料協調。</li><li><b>材質：</b>考量厚薄、彈性、透氣、耐磨與清潔方式。</li><li><b>比例：</b>電子裝飾可集中在袖口、胸前布章、帽沿或背部裝飾區。</li><li><b>舒適：</b>避免硬板、電池與接點直接接觸皮膚或壓迫關節。</li></ul>
+<h3>2-5 紙型入門活動</h3>
+<div class="steps">
+ <div class="step">選擇簡單款式：直筒背心、圍巾、袖套或胸前布章。</div>
+ <div class="step">以人台、既有衣物或教師提供的假想尺寸表作為基礎。</div>
+ <div class="step">在紙上畫出前片、後片或配件形狀，標示縫份及開口。</div>
+ <div class="step">標示電子元件位置、可拆卸電池袋及線路通道。</div>
+ <div class="step">用紙片或布料試擺，確認不妨礙手臂、頸部及身體活動。</div>
+</div>
+</section>
+
+<section id="materials">
+<h2>三、材料與設備清單</h2>
+<table><tr><th>類別</th><th>材料</th><th>建議數量／備註</th></tr>
+<tr><td>布料</td><td>棉布、牛仔布、不織布、舊衣或布章底布</td><td>每組數片；先用布片測試</td></tr>
+<tr><td>縫紉</td><td>手縫針、一般縫線、剪刀、軟尺、布用粉筆</td><td>每組一套；針具由教師管理</td></tr>
+<tr><td>導電材料</td><td>導電縫線、可縫式 LED 模組</td><td>選用教學用低電壓模組；確認額定電壓與極性</td></tr>
+<tr><td>電源</td><td>有保護外殼的可拆式低電壓電池盒</td><td>依 LED 模組規格選用；不可混用不相容電池</td></tr>
+<tr><td>電路保護</td><td>具適當限流設計的 LED 模組、絕緣布、熱縮套管（教師操作）</td><td>避免裸露導體互相接觸</td></tr>
+<tr><td>控制</td><td>ESP32-C3 Super Mini、感測器、麵包板、杜邦線</td><td>先在桌面完成測試，不直接穿戴裸露電路</td></tr>
+<tr><td>測試</td><td>數位萬用電表、USB 供電線、電腦</td><td>教師示範；測試時先斷電再改線</td></tr></table>
+<div class="warn"><b>採購注意：</b>可縫式 LED 有不同額定電壓與電路設計。優先選擇標示清楚、具限流設計、適用低電壓教學的模組。不要假設所有 LED 都能直接接鈕扣電池，也不要把裸 LED 直接接到電池或 ESP32 腳位。</div>
+</section>
+
+<section id="circuit">
+<h2>四、電路圖與原理</h2>
+<h3>4-1 入門：可縫式 LED 布片電路（概念圖）</h3>
+<svg class="diagram" viewBox="0 0 760 330" role="img" aria-label="電池盒經正負極導電縫線連接可縫式LED模組的示意圖">
+<rect x="20" y="20" width="720" height="290" rx="18" fill="#f9fcfa" stroke="#cbdcd6"/>
+<rect x="65" y="110" width="150" height="105" rx="12" fill="#e5f1ee" stroke="#477b91" stroke-width="2"/>
+<text x="140" y="145" text-anchor="middle" font-size="18" fill="#243447">低電壓</text><text x="140" y="170" text-anchor="middle" font-size="18" fill="#243447">電池盒</text><text x="140" y="198" text-anchor="middle" font-size="16" fill="#243447">＋　－</text>
+<path d="M215 135 H330 Q350 135 350 115 H520" fill="none" stroke="#d65b4b" stroke-width="5" stroke-linecap="round"/>
+<path d="M215 190 H310 Q330 190 330 220 H520" fill="none" stroke="#477b91" stroke-width="5" stroke-linecap="round"/>
+<rect x="520" y="85" width="160" height="165" rx="15" fill="#fff5d9" stroke="#d7a84b" stroke-width="2"/>
+<circle cx="600" cy="150" r="28" fill="#ffe28a" stroke="#c89429" stroke-width="3"/>
+<path d="M600 180 V205 M585 205 H615" stroke="#9c6d18" stroke-width="4"/>
+<text x="600" y="115" text-anchor="middle" font-size="17" fill="#243447">可縫式 LED</text>
+<text x="600" y="235" text-anchor="middle" font-size="14" fill="#243447">依模組標示接正負極</text>
+<text x="350" y="95" font-size="15" fill="#b94b3e">正極導電縫線（＋）</text>
+<text x="350" y="255" font-size="15" fill="#386b78">負極導電縫線（－）</text>
+<text x="380" y="290" text-anchor="middle" font-size="13" fill="#617184">概念示意：實際接線以所購模組的端點標示與說明書為準</text>
+</svg>
+<ul><li>正極與負極必須分開縫製，兩條導電路徑不可交叉接觸。</li><li>LED 模組的正負極依元件標示確認，不可只憑外觀猜測。</li><li>線路轉彎處留意鬆緊，避免拉扯造成斷線或短路。</li><li>電源使用可拆式電池盒，作品清潔前必須取下。</li></ul>
+<h3>4-2 進階：ESP32 桌面測試架構</h3>
+<svg class="diagram" viewBox="0 0 760 300" role="img" aria-label="ESP32連接感測器並經適當驅動電路控制LED模組的桌面架構">
+<rect x="20" y="20" width="720" height="260" rx="16" fill="#f9fcfa" stroke="#cbdcd6"/>
+<rect x="45" y="95" width="175" height="110" rx="12" fill="#e5f1ee" stroke="#477b91" stroke-width="2"/>
+<text x="132" y="135" text-anchor="middle" font-size="19" fill="#243447">ESP32-C3</text><text x="132" y="165" text-anchor="middle" font-size="15" fill="#243447">3.3V 控制板</text>
+<rect x="300" y="45" width="165" height="75" rx="10" fill="#edf4fb" stroke="#6c91b5" stroke-width="2"/>
+<text x="382" y="78" text-anchor="middle" font-size="17" fill="#243447">感測器</text><text x="382" y="101" text-anchor="middle" font-size="13" fill="#243447">溫度／光線／動作</text>
+<rect x="300" y="170" width="165" height="75" rx="10" fill="#fff5d9" stroke="#d7a84b" stroke-width="2"/>
+<text x="382" y="201" text-anchor="middle" font-size="17" fill="#243447">驅動／保護電路</text><text x="382" y="225" text-anchor="middle" font-size="13" fill="#243447">依負載規格選型</text>
+<rect x="545" y="170" width="160" height="75" rx="10" fill="#f8e9e5" stroke="#c77b69" stroke-width="2"/>
+<text x="625" y="201" text-anchor="middle" font-size="17" fill="#243447">LED／燈帶</text><text x="625" y="225" text-anchor="middle" font-size="13" fill="#243447">獨立合規供電</text>
+<path d="M220 120 H260 V82 H300" stroke="#477b91" stroke-width="3" fill="none"/><path d="M220 175 H260 V208 H300" stroke="#477b91" stroke-width="3" fill="none"/><path d="M465 208 H545" stroke="#d65b4b" stroke-width="3" fill="none"/>
+<text x="380" y="270" text-anchor="middle" font-size="13" fill="#617184">先在桌面低電壓測試；穿戴前須封裝、固定、隔離並由教師檢查</text>
+</svg>
+<div class="note"><b>教學重點：</b>ESP32 的 GPIO 是控制訊號，不是任意負載的電源。較大電流的 LED 或燈帶須使用適當驅動元件與獨立合規電源；所有電路須確認共同接地及額定值。初階課程不要求學生自行設計電池充電或高電流電路。</div>
+<h3>4-3 製作測試順序</h3>
+<div class="steps"><div class="step">先在紙上畫電路路徑，標示正極、負極及元件位置。</div><div class="step">不接電源，檢查兩條導電縫線是否分離。</div><div class="step">由教師確認 LED 模組規格、電池盒及限流設計相容。</div><div class="step">短時間通電測試；發熱、異味、閃爍異常或電池膨脹時立即停止並交由教師處理。</div><div class="step">確認安全後，才把電子布片固定在可拆卸的服裝配件上。</div></div>
+</section>
+
+<section id="lessons">
+<h2>五、八堂課完整教案</h2>
+<div class="lesson"><span class="tag">第 1 堂</span><h3>認識智慧服裝與服裝設計</h3><b>目標：</b>理解電子紡織的生活應用，辨識服裝用途與設計需求。<p><b>流程：</b>10 分鐘展示案例；10 分鐘討論日常服裝需求；15 分鐘畫設計草圖；10 分鐘分享。<br><b>成果：</b>一張智慧服裝概念圖，標示用途、服裝類型、燈光或感測功能。</p><b>提問：</b>這件服裝要在哪種情境使用？電子元件放在哪裡才不會妨礙活動？</div>
+<div class="lesson"><span class="tag">第 2 堂</span><h3>身型測量、尺寸表與紙型</h3><b>目標：</b>理解人體尺寸、成衣尺寸、鬆量與版型差異。<p><b>流程：</b>10 分鐘教師示範測量；10 分鐘辨認尺寸位置；15 分鐘以人台、既有衣物或假想資料製作尺寸表；10 分鐘畫簡易背心或配件紙型。<br><b>成果：</b>尺寸紀錄表及紙型草圖。</p><b>提醒：</b>不要求公開個人尺寸，不比較身體大小；可全程使用人台或假想數據。</div>
+<div class="lesson"><span class="tag">第 3 堂</span><h3>布料、縫紉與服裝搭配</h3><b>目標：</b>比較布料特性，練習基本手縫與布片固定。<p><b>流程：</b>10 分鐘觀察布料；10 分鐘練習平針縫與回針縫；20 分鐘製作布章、袖套或圍巾配件；5 分鐘檢查牢固度。<br><b>成果：</b>可裝設電子元件的布片或配件。</p><b>提問：</b>布料厚薄、彈性與清潔方式會如何影響電子元件的位置？</div>
+<div class="lesson"><span class="tag">第 4 堂</span><h3>導電縫線與電子電路</h3><b>目標：</b>理解導電縫線、正負極、開路與短路。<p><b>流程：</b>10 分鐘電路概念；10 分鐘觀察導電材料；20 分鐘在練習布片縫出兩條分離路徑；5 分鐘教師檢查。<br><b>成果：</b>完成未通電的電路布片。</p><b>提問：</b>為什麼正負極不能碰在一起？</div>
+<div class="lesson"><span class="tag">第 5 堂</span><h3>LED 發光服裝配件</h3><b>目標：</b>依模組規格完成簡單 LED 紡織作品。<p><b>流程：</b>10 分鐘確認模組規格與安全；10 分鐘示範固定 LED；20 分鐘完成布片電路；5 分鐘教師檢查及短時間測試。<br><b>成果：</b>一件可拆卸的發光布章、袖口或包袋配件。</p><b>評量：</b>線路分離、元件固定、電源可拆卸。</div>
+<div class="lesson"><span class="tag">第 6 堂</span><h3>ESP32 與感測互動入門</h3><b>目標：</b>理解控制板、感測器與輸出裝置的關係。<p><b>流程：</b>10 分鐘認識 ESP32-C3；10 分鐘觀察溫度或光線感測；20 分鐘在桌面測試感測輸入與 LED 輸出；5 分鐘記錄結果。<br><b>成果：</b>一份感測器輸入—控制—輸出的流程圖。</p><b>限制：</b>本堂先用桌面電路，不把未封裝的開發板或電池直接穿在身上。</div>
+<div class="lesson"><span class="tag">第 7 堂</span><h3>智慧服裝整合與造型搭配</h3><b>目標：</b>把已測試的電子布片整合至服裝配件，檢查舒適與安全。<p><b>流程：</b>10 分鐘檢視設計；20 分鐘固定可拆卸模組與布袋；10 分鐘做坐、站、抬手等活動測試；5 分鐘同儕回饋。<br><b>成果：</b>智慧服裝或可穿戴配件原型。</p><b>檢查：</b>沒有尖角、裸露接點、拉扯線路或妨礙活動的部件。</div>
+<div class="lesson"><span class="tag">第 8 堂</span><h3>成果發表、評量與反思</h3><b>目標：</b>能說明設計理念、電路原理、服裝搭配與改良方向。<p><b>流程：</b>5 分鐘準備；每組 3–4 分鐘發表；15 分鐘作品觀摩；最後完成自評與反思。<br><b>成果：</b>作品、設計紀錄、電路圖及反思單。</p><b>發表句型：</b>「我的作品使用情境是……；我選擇……布料與版型，電子功能是……；我最想改進的是……。」</div>
+</section>
+
+<section id="assessment">
+<h2>六、評量規準</h2>
+<table><tr><th>項目</th><th>比重</th><th>達成表現</th></tr>
+<tr><td>服裝與版型設計</td><td>20%</td><td>能說明用途、尺寸考量、活動空間與搭配理由。</td></tr>
+<tr><td>縫紉與材料運用</td><td>20%</td><td>布片固定牢靠，縫線與布料選擇合理。</td></tr>
+<tr><td>電路正確與安全</td><td>25%</td><td>能辨識正負極、保持路徑分離，遵守測試程序。</td></tr>
+<tr><td>科技整合與創意</td><td>20%</td><td>電子功能符合設計目的，元件可拆卸且配置合理。</td></tr>
+<tr><td>發表與反思</td><td>15%</td><td>能清楚介紹作品並提出具體改良方向。</td></tr></table>
+</section>
+
+<section id="worksheet">
+<h2>七、學生學習單（可直接列印）</h2>
+<h3>學習單 A：我的智慧服裝企劃</h3>
+<label>作品名稱： <input type="text" placeholder="例如：星光安全背心"></label>
+<label>使用情境： <select><option>日常穿搭</option><option>夜間可視配件</option><option>舞台表演</option><option>戶外活動</option><option>其他</option></select></label>
+<label>服裝或配件類型： <input type="text" placeholder="背心、外套、袖套、圍巾、布章……"></label>
+<label>預計使用的電子功能： <input type="text" placeholder="LED 發光、光線感測、溫度顯示……"></label>
+<label>布料與色彩搭配理由： <textarea rows="3" style="width:100%"></textarea></label>
+<label>電子元件預計放置位置與原因： <textarea rows="3" style="width:100%"></textarea></label>
+<h3>學習單 B：服裝尺寸與版型紀錄</h3>
+<p class="small">可使用人台、既有衣物尺寸或教師提供的假想資料，不必填寫個人身體數據。</p>
+<table><tr><th>項目</th><th>參考數值／尺寸</th><th>對版型的影響</th></tr>
+<tr><td>肩寬</td><td><input placeholder="自行填寫"></td><td><input placeholder="例如：肩線位置"></td></tr>
+<tr><td>衣長</td><td><input placeholder="自行填寫"></td><td><input placeholder="例如：下擺位置"></td></tr>
+<tr><td>胸／上身尺寸</td><td><input placeholder="自行填寫"></td><td><input placeholder="例如：預留活動空間"></td></tr>
+<tr><td>袖長</td><td><input placeholder="自行填寫"></td><td><input placeholder="例如：抬手是否方便"></td></tr></table>
+<h3>學習單 C：電路檢查表</h3>
+<div class="checklist">
+<label><input type="checkbox">我能指出電源正極與負極。</label>
+<label><input type="checkbox">正極與負極導電縫線沒有接觸。</label>
+<label><input type="checkbox">LED 模組額定規格與電源相容，並有適當限流設計。</label>
+<label><input type="checkbox">電池盒可以拆卸，清潔前會先取下。</label>
+<label><input type="checkbox">電路已由教師檢查後才通電。</label>
+<label><input type="checkbox">線路與元件不會刮傷皮膚或妨礙活動。</label>
+</div>
+<h3>學習單 D：作品反思</h3>
+<label>我最滿意的設計是：<textarea rows="2" style="width:100%"></textarea></label>
+<label>製作時遇到的問題與解決方法：<textarea rows="3" style="width:100%"></textarea></label>
+<label>如果再做一次，我會改進：<textarea rows="2" style="width:100%"></textarea></label>
+<button onclick="window.print()">列印／另存 PDF</button>
+</section>
+
+<section id="safety">
+<h2>八、教室安全與維護規範</h2>
+<div class="warn"><b>電氣安全：</b>只使用符合教學用途的低電壓設備；絕不接觸家用市電。學生不得自行拆解電池、焊接電池、製作充電器或改裝鋰電池。</div>
+<ul>
+<li>鈕扣電池有誤食風險，必須由教師保管，使用有螺絲固定的電池盒，課後清點。</li>
+<li>若電池或電路異常發熱、變形、漏液或有異味，立即停止使用，不再充電或穿戴。</li>
+<li>ESP32 與感測器先在桌面測試；穿戴前須使用合適外殼、絕緣與應力緩解設計，並經教師檢查。</li>
+<li>電子模組應可拆卸；洗滌前取下所有電子元件與電池。</li>
+<li>縫針、剪刀由教師說明安全用法並妥善收納。</li>
+<li>避免把硬質電子元件放在腋下、頸部、胸口受壓處或關節彎折處。</li>
+<li>本課程作品是教學原型，不宣稱具備醫療、防護或正式道路安全認證功能。</li>
+</ul>
+<h3>教師課前檢查</h3>
+<div class="checklist">
+<label><input type="checkbox">已確認所有 LED 模組額定電壓及限流設計。</label>
+<label><input type="checkbox">已準備電路測試布片與備用材料。</label>
+<label><input type="checkbox">已規劃學生可選擇人台／假想尺寸的替代方式。</label>
+<label><input type="checkbox">已準備電池保管、清點及回收流程。</label>
+<label><input type="checkbox">已確認作品電子模組可拆卸且不接觸皮膚。</label>
+</div>
+</section>
+</main>
+<footer>智慧服裝與電子紡織實驗室｜國中跨領域課程<br>教師可依學生年級、設備與實際課時調整內容。</footer>
+</body></html>
